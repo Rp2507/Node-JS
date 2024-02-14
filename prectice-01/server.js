@@ -131,7 +131,6 @@ route.post('/postData', (req, res, next) => {
 
 //  5 =======
 
-
 // routes use
 app.use(route)
 
