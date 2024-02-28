@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // routes
-app.use('v1', routes)
+app.use('/v1', routes)
 
 // db connection
 dbConnect()

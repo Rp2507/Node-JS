@@ -2,22 +2,22 @@ const mongoose = require('mongoose')
 
 const admineSchema = new mongoose.Schema({
     name:{
-        type: string,
+        type: String,
         require: true,
         trim: true
     },
     email:{
-        type:string,
+        type:String,
         require: true,
         trim: true
     },
     password:{
-        type:string,
+        type:String,
         require:true,
         trim: true
     },
     role:{
-        type: string,
+        type: String,
         require: true,
         enum: ['admin' , 'user'],
         default: 'user'

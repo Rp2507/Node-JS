@@ -1,1 +1,5 @@
 module.exports.adminController = require('./admin.controller')
+module.exports.userController = require('./user.controller')
+module.exports.categorieController = require('./categorie.controller')
+module.exports.foodItemController = require('./foodItem.controller')
+module.exports.cityController = require('./city.controller')

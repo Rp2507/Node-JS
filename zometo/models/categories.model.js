@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const categoriesSchema = new mongoose.Schema({
-    name:{
+    Categorie_name:{
         type:String,
         require: true,
         trim : true
