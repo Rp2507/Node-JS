@@ -6,5 +6,6 @@ const route = express.Router()
 
 route.post('/add',validate(customerValidation.customer), customerController.addCustomer)
 route.get('/get', customerController.getCustomer)
+route.delete('/delete', customerController.deleteCustomer)
 
 module.exports = route

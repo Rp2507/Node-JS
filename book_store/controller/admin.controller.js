@@ -53,4 +53,31 @@ const getAdmin = async (req, res) => {
         }
 }
 
-module.exports = { addAdmin, getAdmin }
+// delete admin
+const deleteAdmin = async (req, res) =>{
+
+    try{
+        let { id } = req.params;
+        console.log(id);
+
+        let adminExist = await adminService.findAdminId(id)
+
+        if(!adminExist){
+            res.status(400).json({
+                message: 'admin not found'
+            })
+        }
+
+        let admin = await adminService.deleteAdmin(id)
+        res.status(200).json({
+            message: 'admin delete successfully',
+            admin
+        })
+
+    }catch(err){
+        console.log(err);
+    }
+
+}
+
+module.exports = { addAdmin, getAdmin, deleteAdmin }

@@ -1,5 +1,6 @@
 const { customerService } = require("../service")
 
+// add cus
 const addCustomer = async (req, res) => {
     console.log(req.body);
     try{
@@ -29,6 +30,7 @@ const addCustomer = async (req, res) => {
     }
 }
 
+// get cus
 const getCustomer = async (req,res) =>{
     try{
         let customer = await customerService.getCustomer()
@@ -46,4 +48,28 @@ const getCustomer = async (req,res) =>{
     }
 }
 
-module.exports= {addCustomer, getCustomer}
+// delete cus
+const deleteCustomer = async (req, res) => {
+    try{
+
+        let {id} = req.params
+        console.log(id);
+
+        let customerExist = await customerService.findCustomerId(id)
+        if(!customerExist){
+            res.status(400).json({
+                message: 'customer not found'
+            })
+        }
+
+        let customer = await customerService.deleteCustomer(id)
+        res.status(200).json({
+            message: 'customer delete successfully', customer
+        })
+
+    }catch(err){
+        console.log(err);
+    }
+}
+
+module.exports= {addCustomer, getCustomer, deleteCustomer}

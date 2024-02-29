@@ -14,4 +14,14 @@ const getAuthor = () => {
     return authorSchema.find()
 }
 
-module.exports = {addAuthor, findAuthor, getAuthor}
+// find author for delete
+const findAuthorId = (id) => {
+    return authorSchema.findById(id)
+}
+
+// delete author
+const deleteAuthor = (id) => {
+    return authorSchema.findByIdAndDelete(id)
+}
+
+module.exports = {addAuthor, findAuthor, getAuthor, findAuthorId, deleteAuthor}

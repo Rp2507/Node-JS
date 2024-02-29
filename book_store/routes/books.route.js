@@ -6,5 +6,6 @@ const route = express.Router()
 
 route.post('/add', validate(bookValidation.book), booksController.addBook)
 route.get('/get', booksController.getBooks)
+route.delete('/delete',booksController.deleteBook)
 
 module.exports= route

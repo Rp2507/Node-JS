@@ -15,9 +15,19 @@ const findEmail = (email) => {
     return adminSchema.findOne({ email })
 }
 
+// find admin for delete
+const findAdminId = (id) => {
+    return adminSchema.findById(id)
+}
+
+// delete admin
+const deleteAdmin = (id) => {
+    return adminSchema.findByIdAndDelete(id)
+}
+
 // get admin
 const getAdmin = () => {
     return adminSchema.find()
 }
 
-module.exports = { addAdmin, findAdmin, findEmail , getAdmin }
+module.exports = { addAdmin, findAdmin, findEmail , getAdmin , findAdminId, deleteAdmin}

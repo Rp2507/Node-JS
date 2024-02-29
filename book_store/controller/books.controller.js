@@ -1,5 +1,6 @@
 const { bookService } = require("../service");
 
+// add book
 const addBook = async (req, res) =>{
     console.log(req.body);
 
@@ -25,6 +26,7 @@ const addBook = async (req, res) =>{
     }
 }
 
+// get book
 const getBooks = async (req, res) => {
     try{
         let books = await bookService.getBooks()
@@ -41,4 +43,26 @@ const getBooks = async (req, res) => {
     }
 }
 
-module.exports= { addBook, getBooks }
+// delete book
+const deleteBook = async( req, res ) =>{
+    try{
+
+        let {id} = req.params
+        console.log(id);
+
+        let bookExist = await bookService.findBookId(id)
+        if(!bookExist){
+            res.status(400).json({message: 'books not found'})
+        }
+
+        let book = await bookService.deleteBook(id)
+        res.status(200).json({
+            message: 'book delete success', book
+        })
+
+    }catch(err){
+        console.log(err);
+    }
+}
+
+module.exports= { addBook, getBooks, deleteBook }

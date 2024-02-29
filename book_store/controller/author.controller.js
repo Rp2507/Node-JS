@@ -5,8 +5,6 @@ const addAuthor = async (req, res) =>{
 
     try{
         let body = req.body
-        // let authorExist = await authorService.findAuthor(req.body.fistName)
-
         let authorExist = await authorService.findAuthor(req.body.firstName)
 
         if(authorExist){
@@ -48,4 +46,27 @@ const getAuthor = async (req, res) => {
     }
 }
 
-module.exports = { addAuthor, getAuthor }
+// delete author
+const deleteAuthor = async (req,res) => {
+    try{
+        let {id} = req.params
+        console.log(id);
+
+        let authorExist = await authorService.findAuthorId(id)
+        if(!authorExist){
+            res.status(400).json({
+                message: 'author not found'
+            })
+        }
+
+        let author = await authorService.deleteAuthor(id)
+        res.status(200).json({
+            message: 'author delete success', author
+        })
+
+    }catch(err){
+        console.log(err);
+    }
+}
+
+module.exports = { addAuthor, getAuthor, deleteAuthor }
