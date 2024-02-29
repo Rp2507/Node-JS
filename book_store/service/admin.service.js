@@ -30,4 +30,9 @@ const getAdmin = () => {
     return adminSchema.find()
 }
 
-module.exports = { addAdmin, findAdmin, findEmail , getAdmin , findAdminId, deleteAdmin}
+// update admin
+const updateAdmin = (body, id) => {
+    return adminSchema.findByIdAndUpdate(id, {$set: body})
+}
+
+module.exports = { addAdmin, findAdmin, findEmail , getAdmin , findAdminId, deleteAdmin, updateAdmin}

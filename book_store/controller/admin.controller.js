@@ -80,4 +80,19 @@ const deleteAdmin = async (req, res) =>{
 
 }
 
-module.exports = { addAdmin, getAdmin, deleteAdmin }
+// update admin
+const updateAdmin = async (req, res) => {
+    console.log(req.body, 'body');
+    console.log(req.params, 'params');
+
+    let body = req.body
+    let {id} = req.params
+
+    let admin = await adminService.updateAdmin(body, id)
+
+    res.status(200).json({
+        message: 'admin update successfully', admin
+    })
+}
+
+module.exports = { addAdmin, getAdmin, deleteAdmin, updateAdmin }

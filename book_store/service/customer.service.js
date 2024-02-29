@@ -23,4 +23,9 @@ const deleteCustomer = (id) => {
     return customerSchema.findByIdAndDelete(id)
 }
 
-module.exports = { addCustomer, findCustomer, getCustomer, findCustomerId, deleteCustomer }
+// update cus
+const updateCustomer = (body, id) => {
+    return customerSchema.findByIdAndUpdate(id, {$set : body})
+}
+
+module.exports = { addCustomer, findCustomer, getCustomer, findCustomerId, deleteCustomer, updateCustomer }

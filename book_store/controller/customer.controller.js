@@ -72,4 +72,17 @@ const deleteCustomer = async (req, res) => {
     }
 }
 
-module.exports= {addCustomer, getCustomer, deleteCustomer}
+// update cus
+const updateCustomer = async (req, res) => {
+    try{
+        let body = req.body
+        let {id} = req.params
+
+        let customer = await customerService.updateCustomer(body, id)
+        res.status(200).json({message: 'cus update successfully', customer})
+    }catch(err){
+        console.log(err);
+    }
+}
+
+module.exports= {addCustomer, getCustomer, deleteCustomer, updateCustomer}

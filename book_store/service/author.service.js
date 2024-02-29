@@ -24,4 +24,9 @@ const deleteAuthor = (id) => {
     return authorSchema.findByIdAndDelete(id)
 }
 
-module.exports = {addAuthor, findAuthor, getAuthor, findAuthorId, deleteAuthor}
+// update author
+const updateAuthor = (body, id) => {
+    return authorSchema.findByIdAndUpdate(id, {$set: body} )
+}
+
+module.exports = {addAuthor, findAuthor, getAuthor, findAuthorId, deleteAuthor, updateAuthor}

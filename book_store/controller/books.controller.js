@@ -65,4 +65,14 @@ const deleteBook = async( req, res ) =>{
     }
 }
 
-module.exports= { addBook, getBooks, deleteBook }
+// update book
+const updateBook = async (req, res) => {
+    let body = req.body
+    let {id} = req.params
+
+    let book = await bookService.updateBook(body, id)
+
+    res.status(200).json({message: 'book update successfully', book})
+}
+
+module.exports= { addBook, getBooks, deleteBook, updateBook }

@@ -20,4 +20,9 @@ const deleteBook = (id) => {
     return bookSchema.findByIdAndDelete(id)
 }
 
-module.exports= {addBokk, getBooks, findBookId, deleteBook}
+// update book
+const updateBook = (body, id) => {
+    return bookSchema.findByIdAndUpdate(id, {$set : body})
+}
+
+module.exports= {addBokk, getBooks, findBookId, deleteBook, updateBook}

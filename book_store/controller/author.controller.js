@@ -69,4 +69,16 @@ const deleteAuthor = async (req,res) => {
     }
 }
 
-module.exports = { addAuthor, getAuthor, deleteAuthor }
+// update author
+const updateAuthor = async (req, res) => {
+    let body = req.body
+    let {id} = req.params
+
+    let author = await authorService.updateAuthor(body, id)
+
+    res.status(200).json({
+        message: 'author update successfully', author
+    })
+}
+
+module.exports = { addAuthor, getAuthor, deleteAuthor, updateAuthor }
