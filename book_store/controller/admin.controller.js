@@ -7,6 +7,12 @@ const addAdmin = async (req, res) => {
         let body = req.body
         let adminExist = await adminService.findAdmin(req.body.name)
 
+        let emailExist = await adminService.findEmail(req.body.email)
+
+        if(emailExist){
+            throw new Error('email must be unique')
+        }
+
         if(adminExist){
             throw new Error('admin already exist')
         }
@@ -27,4 +33,24 @@ const addAdmin = async (req, res) => {
     }
 }
 
-module.exports = { addAdmin }
+const getAdmin = async (req, res) => {
+        try{
+            let admin = await adminService.getAdmin()
+
+            if(!admin){
+                throw new Error("admin not found")
+            }
+
+            res.status(200).json({
+                message: "admin get successfully",
+                admin
+            })
+        }catch(err){
+            res.status(400).json({
+                success: false,
+                err: err.message
+            })
+        }
+}
+
+module.exports = { addAdmin, getAdmin }

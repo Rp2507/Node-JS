@@ -7,9 +7,9 @@ const authorSchema = new mongoose.Schema({
     lastName:{
         type: String
     },
-    bookID:{
-        type: String
-    }
+    // bookID:{
+    //     type: String
+    // }
 })
 
 const author = mongoose.model('authorSchema', authorSchema)

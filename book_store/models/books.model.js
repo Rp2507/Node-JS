@@ -1,19 +1,19 @@
 const mongoose = require('mongoose')
 
 const bookSchema = new mongoose.Schema({
-    bookID:{
-        type: String
-    },
-    authorID:{
-        type: String
-    },
+    // bookID:{
+    //     type: String
+    // },
+    // authorID:{
+    //     type: String
+    // },
     title:{
         type: String
     },
     price:{
         type: Number
     },
-    publisation_Year:{
+    publisation_year:{
         type: Number
     }
 })
